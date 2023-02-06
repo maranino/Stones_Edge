@@ -1,72 +1,48 @@
 import random
 
-# Characters
-kiri = "Kiri"
-kiri_hp = 140
-kiri_damage = 60
-kiri_job = "farmer"
 
-mika = "Mika"
-mika_hp = 120
-mika_damage = 70
-mika_job = "merchant"
+class Character:
+    def __init__(self, name, hp, damage, job):
+        self.name = name
+        self.hp = hp
+        self.damage = damage
+        self.job = job
 
-rusty = "Rusty"
-rusty_hp = 130
-rusty_damage = 80
-rusty_job = "prince"
 
-ciel = "Ciel"
-ciel_hp = 120
-ciel_damage = 70
-ciel_job = "knight"
+kiri = Character('Kiri', 140, 60, 'farmer')
+mika = Character('Mika', 120, 70, 'merchant')
+rusty = Character('Rusty', 130, 80, 'prince')
+ciel = Character('Ciel', 120, 70, 'knight')
 
-# Monsters
-serpant = "Serpant"
-serpant_hp = 190
-serpant_damage = 30
 
-hawk = "Hawk"
-hawk_hp = 180
-hawk_damage = 40
+class Monsters:
+    def __init__(self, name, hp, damage):
+        self.name = name
+        self.hp = hp
+        self.damage = damage
 
-bear = "Bear"
-bear_hp = 220
-bear_damage = 50
 
-gator = "Gator"
-gator_hp = 200
-gator_damage = 40
+serpant = Monsters('Serpant', 190, 30)
+hawk = Monsters('Hawk', 180, 40)
+bear = Monsters('Bear', 220, 50)
+gator = Monsters('Gator', 200, 40)
 
-# Travelers
-traveler_east = "Tristan"
-traveler_west = "Mark"
-traveler_south = "Trinity"
-traveler_north = "Juni"
 
-# Locations
-forrest, east = "forrest", "east"
-desert, west = "desert", "west"
-swamps, south = "swamps", "south"
-mountains, north = "mountains", "north"
+class Locations:
+    def __init__(self, direction, terrain, traveler, cover, trap, monument):
+        self.direction = direction
+        self.terrain = terrain
+        self.traveler = traveler
+        self.cover = cover
+        self.trap = trap
+        self.monument = monument
 
-# Cover
-tree = "tree"
-rock = "rock"
-broken_tree = "broken tree"
-boulder = "boulder"
 
-# Trap
-pit = "a into pit of spikes"
-den = "a into den of snakes"
-quicksand = "into quicksand"
-cliff = "off a cliff"
+east = Locations('east', 'forrest', 'Tristan', 'tree', 'into a pit of spikes', 'totem pole')
+west = Locations('west', 'desert', 'Mark', 'rock', 'into a pit of snakes', 'obelisk')
+south = Locations('south', 'swamps', 'Trinity', 'broken tree', 'into quicksand', 'tomb')
+north = Locations('north', 'mountains', 'Juni', 'boulder', 'off a cliff', 'temple')
 
-# Monument
-totem = "totem pole"
-obelisk = "obelisk"
-tomb = "tomb"
-temple = "temple"
 
 def gameplay():
     while True:
@@ -88,52 +64,39 @@ def gameplay():
 
             if choice == "1" or choice == "kiri":
                 character = kiri
-                my_hp = kiri_hp
-                my_damage = kiri_damage
-                my_job = kiri_job
                 break
 
             elif choice == "2" or choice == "mika":
                 character = mika
-                my_hp = mika_hp
-                my_damage = mika_damage
-                my_job = mika_job
                 break
 
             elif choice == "3" or choice == "rusty":
                 character = rusty
-                my_hp = rusty_hp
-                my_damage = rusty_damage
-                my_job = rusty_job
                 break
 
             elif choice == "4" or choice == "ciel":
                 character = ciel
-                my_hp = ciel_hp
-                my_damage = ciel_damage
-                my_job = ciel_job
                 break
 
             elif choice == "5" or choice == "exit":
                 print("Goodbye!")
                 exit()
-            
+
             else:
                 print("Invalid entry, try again!")
-            
 
         print(f"""
         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-                    You have chosen {character}
-                    Your Hp is: {my_hp}
-                    Your damage is: {my_damage}
+                    You have chosen {character.name}
+                    Your Hp is: {character.hp}
+                    Your damage is: {character.damage}
         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-                    You are named {character}...
-        a {my_job} from the Royal City of Stone's Edge.
+                    You are named {character.name}...
+        a {character.job} from the Royal City of Stone's Edge.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
         
@@ -171,6 +134,7 @@ def gameplay():
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
         """)
+
         while True:
             # Choose the Location
             print("""
@@ -187,15 +151,8 @@ def gameplay():
                    Which direction will you go? """).lower()
 
             if choice == "mountains" or choice == "north":
-                location = mountains
-                direction = north
+                location = north
                 monster = hawk
-                monster_hp = 180
-                monster_damage = 40
-                Traveler = traveler_north
-                cover = boulder
-                trap = cliff
-                monument = temple
                 print(""" 
 
                                        /\ 
@@ -218,15 +175,8 @@ def gameplay():
                 break
 
             elif choice == "forrest" or choice == "east":
-                location = forrest
-                direction = east
+                location = east
                 monster = bear
-                monster_hp = 220
-                monster_damage = 50
-                Traveler = traveler_east
-                cover = tree
-                trap = pit
-                monument = totem
                 print("""
  
          ^  ^  ^   ^      ___I_      ^  ^   ^  ^  ^   ^  ^
@@ -239,15 +189,8 @@ def gameplay():
                 break
 
             elif choice == "desert" or choice == "west":
-                location = desert
-                direction = west
+                location = west
                 monster = serpant
-                monster_hp = 190
-                monster_damage = 30
-                Traveler = traveler_west
-                cover = rock
-                trap = den
-                monument = obelisk
                 print(""" 
 
                ,,                               .-.
@@ -267,15 +210,8 @@ def gameplay():
                 break
 
             elif choice == "swamps" or choice == "south":
-                location = swamps
-                direction = south
+                location = south
                 monster = gator
-                monster_hp = 200
-                monster_damage = 50
-                Traveler = traveler_south
-                cover = broken_tree
-                trap = quicksand
-                monument = tomb
                 print("""
 
                       __..-:'':__:..:__:'':-..__
@@ -297,36 +233,36 @@ def gameplay():
                 break
 
             elif choice == "5" or choice == "exit":
-                print(f"Goodbye {character}!")
+                print(f"Goodbye {character.name}!")
                 exit()
 
             else:
                 print("Invalid entry, try again!")
         print(f"""
         
-        You have chosen the {location} to the {direction}.
-    Only moments into your adventure you are attacked by a {monster}!
+        You have chosen the {location.terrain} to the {location.direction}.
+    Only moments into your adventure you are attacked by a {monster.name}!
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->   
     """)
         while True:
             # Monster Battle
-            monster_hp = monster_hp - my_damage
+            monster.hp = monster.hp - character.damage
             print(f"""
-            {character} attacks the {monster}!
-            The {monster}'s hitpoints are now: {str(monster_hp)}
+            {character.name} attacks the {monster.name}!
+            The {monster.name}'s hitpoints are now: {str(monster.hp)}
         """)
-            if monster_hp > 0:
-                my_hp = my_hp - monster_damage
+            if monster.hp > 0:
+                character.hp = character.hp - monster.damage
                 print(f"""
-                The {monster} strikes back at {character}!
-                {character}'s hitpoints are now: {str(my_hp)}
+                The {monster.name} strikes back at {character.name}!
+                {character.name}'s hitpoints are now: {str(character.hp)}
         """)
-            if my_hp <= 0:
+            if character.hp <= 0:
                 print(f"""
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-                {character} has lost the battle.
+                {character.name} has lost the battle.
                 This is where your story ends...
                              __
                             /_/\/\  
@@ -337,16 +273,16 @@ def gameplay():
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
     """)
-                replay() 
-            if monster_hp <= 0:
+                replay()
+            if monster.hp <= 0:
                 print(f"""
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-                The {monster} has lost the battle.
+                The {monster.name} has lost the battle.
                         You emerge victorious!
             Beaten and battered from the intense battle 
                     you look for a place to rest.
-    You find a large {cover} to to hide behind as you recover.
+    You find a large {location.cover} to to hide behind as you recover.
                 Several hours pass then you are awoken 
             by the sounds of a traveler passing by.
                 You decide whether or not to approach 
@@ -355,7 +291,6 @@ def gameplay():
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
             """)
                 break
-
         while True:
             # Approach Traveler?
             print("""
@@ -373,26 +308,26 @@ def gameplay():
                 print(f"""
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-        You emerge from the {cover} and introduce yourself.
-                They says their name is {Traveler}.
+        You emerge from the {location.cover} and introduce yourself.
+                They says their name is {location.traveler}.
         The traveler sees you are wounded and asks... 
             why you are outside the walls of the Royal City.
-            You tell {Traveler} of the {monster} attack 
+            You tell {location.traveler} of the {monster.name} attack 
                     and how you barely escaped...
             Then you tell them of the rumor you heard 
                 and ask if they had known anthing.
-                    {Traveler} says they have, 
+                    {location.traveler} says they have, 
             but first you must win a game of their choice.
                             You agree.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
                 
-        {Traveler} tells you, you will roll a single dice...
+        {location.traveler} tells you, you will roll a single dice...
                 If it lands on 3 or under, 
             I will give you what is in my pocket...
     If it lands on a 4 or more then you will be on your own!
-        You tell {Traveler} that this sounds fair enough.
-            {Traveler} then hands you the single dice.
+        You tell {location.traveler} that this sounds fair enough.
+            {location.traveler} then hands you the single dice.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
     """)
@@ -438,16 +373,16 @@ def gameplay():
                     """, f"""
 
                     An old coin? 
-    {Traveler} places it into your hand and you evaluate it.
+    {location.traveler} places it into your hand and you evaluate it.
                 Why would I want such a thing? 
-            As you look up {Traveler} is gone...
+            As you look up {location.traveler} is gone...
                     Something is off... 
         You reach for your coin bag and it's gone!
-            You have been tricked by {Traveler}!
+            You have been tricked by {location.traveler}!
                 You are wounded, starved 
         and now you don't even have money to buy food!
         You don't have the strength to hunt anything, 
-        if they are anything like that {monster}!
+        if they are anything like that {monster.name}!
             You are forced to return home, 
             with shame of your failure!
                     
@@ -461,12 +396,12 @@ def gameplay():
                 else:
                     print(f"""
                         Sorry you lose... 
-        {Traveler} says they cannot help you, a deal is a deal.
+        {location.traveler} says they cannot help you, a deal is a deal.
                         It is the truth... 
-    I suppose I will look further in the {location} for clues.
+    I suppose I will look further in the {location.terrain} for clues.
                 You say your farewells and continue on.
-                You go deeper into the {location}...
-        Back home you heard that there was a {monument} 
+                You go deeper into the {location.terrain}...
+        Back home you heard that there was a {location.monument} 
                 that held a clue of the jewels location!
                 If you could just find this, 
             surely you will find what you are looking for...
@@ -476,29 +411,29 @@ def gameplay():
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
                 You stumble around for a while 
-                and almost fall {trap}! 
+                and almost fall {location.trap}! 
             Thankfully you saw it last minute! 
         Being a little more cautious now you continue on...
             As the sun starts to set you begin to worry
                 and look for a place to camp.
-                You see a similar {cover} like before
+                You see a similar {location.cover} like before
                 and figure since it worked last time,
         you should try hiding in a spot like that again!
     As you get closer you look around to make sure it's all clear.
-            As you peak your head around the {cover} 
-            you see the {monument} you were looking for!
+            As you peak your head around the {location.cover} 
+            you see the {location.monument} you were looking for!
                     You quickly move towards it 
                 to look for the clue you heard of!
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->           
         """)
-                chance = [f"There are no hints or clues at this {monument}!", f"The jewel you look for has already been taken by {Traveler}!"]
+                chance = [f"There are no hints or clues at this {location.monument}!", f"The jewel you look for has already been taken by {location.traveler}!"]
                 clue = random.choice(chance)
                 print(f""" 
         There was always a chance that the rumors weren't true.
         This moment will determine the fate of my adventure!
         If I get no new leads here, then I must return home.
-                    As you inspect the {monument}, 
+                    As you inspect the {location.monument}, 
                     you find a hand written note...
                             It says... 
         {clue}
@@ -515,9 +450,9 @@ def gameplay():
             You stay hidden and let the traveler pass...
             You never know if someone is friendly or not!
                 You do not have the strength to fight 
-                after that battle with the {monster}!
-            Instead you go deeper into the {location}...
-            Back home you heard that there was a {monument} 
+                after that battle with the {monster.name}!
+            Instead you go deeper into the {location.terrain}...
+            Back home you heard that there was a {location.monument} 
                 that held a clue of the jewels location!
                     If you could just find this, 
             surely you will find what you are looking for...
@@ -525,7 +460,7 @@ def gameplay():
         you pull it out and see if you could find your way...
                     You slowly step forward as you 
             try to trace your steps from the city...
-                    Suddenly!! You step {trap}!! 
+                    Suddenly!! You step {location.trap}!! 
 
                         You are dead!
                             _____
@@ -538,22 +473,24 @@ def gameplay():
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->        
         """)
                 replay()
-               
+
             elif choice == "exit":
-                print(f"Goodbye {character}!")
+                print(f"Goodbye {character.name}!")
                 exit()
             else:
                 print("Invalid entry, try again!")
 
     # Code for replay the game
+
+
 def replay():
-        replay = input("""
+    replay = input("""
                         Play again? """).lower()
 
-        if replay == "yes" or replay == "y":
-            gameplay()
-        if replay == "no" or replay == "n":
-            print("""
+    if replay == "yes" or replay == "y":
+        gameplay()
+    if replay == "no" or replay == "n":
+        print("""
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->            
       _____                                 ____                        
      / ____|                               / __ \                       
@@ -565,6 +502,7 @@ def replay():
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->                                                                     
     """)
-        quit()
+    quit()
+
 
 gameplay()
