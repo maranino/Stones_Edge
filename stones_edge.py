@@ -2,6 +2,8 @@ import random
 
 
 class Character:
+    '''This class is to define each character's name, hit point, attack damage and thier job title'''
+
     def __init__(self, name, hp, damage, job):
         self.name = name
         self.hp = hp
@@ -16,6 +18,8 @@ ciel = Character('Ciel', 120, 70, 'knight')
 
 
 class Monsters:
+    '''This class is to define each monster's name, hit points and attack damage'''
+
     def __init__(self, name, hp, damage):
         self.name = name
         self.hp = hp
@@ -29,6 +33,9 @@ gator = Monsters('Gator', 200, 40)
 
 
 class Locations:
+    '''This class is to define each location's direction, terrain, 
+    the traveler, and the cover, trap and monument found in the story'''
+
     def __init__(self, direction, terrain, traveler, cover, trap, monument):
         self.direction = direction
         self.terrain = terrain
@@ -250,13 +257,13 @@ def gameplay():
             monster.hp = monster.hp - character.damage
             print(f"""
             {character.name} attacks the {monster.name}!
-            The {monster.name}'s hitpoints are now: {str(monster.hp)}
+            The {monster.name}'s hit points are now: {str(monster.hp)}
         """)
             if monster.hp > 0:
                 character.hp = character.hp - monster.damage
                 print(f"""
                 The {monster.name} strikes back at {character.name}!
-                {character.name}'s hitpoints are now: {str(character.hp)}
+                {character.name}'s hit points are now: {str(character.hp)}
         """)
             if character.hp <= 0:
                 print(f"""
