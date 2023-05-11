@@ -51,7 +51,13 @@ west = Locations('west', 'desert', 'Mark', 'rock', 'into a pit of snakes', 'obel
 south = Locations('south', 'swamps', 'Trinity', 'broken tree', 'into quicksand', 'tomb')
 north = Locations('north', 'mountains', 'Juni', 'boulder', 'off a cliff', 'temple')
 
-today = date(1556, 6, 20)
+beginningDate = date(1556, 6, 20)
+earlyDeath = date(1556, 6, 21)
+trapDeath = date(1556, 6, 22)
+gameDate = date(1556, 6, 23)
+endDate = date(1556, 6, 24)
+victoryDate = date(1556, 6, 25)
+
 
 def gameplay():
     while True:
@@ -104,7 +110,7 @@ def gameplay():
         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-                  The date is {today.month}-{today.day}-{today.year}
+                  The date is {beginningDate.month}-{beginningDate.day}-{beginningDate.year}
                     You are named {character.name}...
         a {character.job} from the Royal City of Stone's Edge.
 
@@ -273,7 +279,7 @@ def gameplay():
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
                 {character.name} has lost the battle.
-                This is where your story ends...
+            {earlyDeath.month}-{earlyDeath.day}-{earlyDeath.year} is when your story ends...
                              __
                             /_/\/\  
                             \_\  /
@@ -358,7 +364,7 @@ def gameplay():
                 if dice <= 3:
                     prizes = [f"""
 
-                     **THE RARE JEWEL!
+                     THE RARE JEWEL!
 
                       .     '     ,
                         _________
@@ -367,7 +373,7 @@ def gameplay():
                          '.\ /.'
                            '.'
 
-            You have succeeded in your adventure!**
+        You have succeeded in your adventure on {victoryDate.month}-{victoryDate.day}-{victoryDate.year}!
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
          __   __ _______ __   __    _     _ ___ __    _ __ 
@@ -392,9 +398,9 @@ def gameplay():
                 You are wounded, starved 
         and now you don't even have money to buy food!
         You don't have the strength to hunt anything, 
-        if they are anything like that {monster.name}!
-            You are forced to return home, 
-            with shame of your failure!
+          if they are anything like that {monster.name}!
+        You are forced to return home on {gameDate.month}-{gameDate.day}-{gameDate.year} 
+               with shame of your failure!
                     
                     """]
                     prize_won = random.choice(prizes)
@@ -448,7 +454,7 @@ def gameplay():
                             It says... 
         {clue}
 
-                    Your Adventure Ends Here.....
+                Your Adventure Ends on {endDate.month}-{endDate.day}-{endDate.year}.....
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->    
                 """)
@@ -472,7 +478,7 @@ def gameplay():
             try to trace your steps from the city...
                     Suddenly!! You step {location.trap}!! 
 
-                        You are dead!
+                  You have died on {trapDeath.month}-{trapDeath.day}-{trapDeath.year}
                             _____
                            /     \  
                           | () () |
