@@ -1,4 +1,5 @@
 import random
+from datetime import date
 
 
 class Character:
@@ -50,6 +51,7 @@ west = Locations('west', 'desert', 'Mark', 'rock', 'into a pit of snakes', 'obel
 south = Locations('south', 'swamps', 'Trinity', 'broken tree', 'into quicksand', 'tomb')
 north = Locations('north', 'mountains', 'Juni', 'boulder', 'off a cliff', 'temple')
 
+today = date(1556, 6, 20)
 
 def gameplay():
     while True:
@@ -102,6 +104,7 @@ def gameplay():
         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
+                  The date is {today.month}-{today.day}-{today.year}
                     You are named {character.name}...
         a {character.job} from the Royal City of Stone's Edge.
 
