@@ -53,10 +53,10 @@ north = Locations('north', 'mountains', 'Juni', 'boulder', 'off a cliff', 'templ
 
 beginningDate = date(1556, 6, 20)
 earlyDeath = date(1556, 6, 21)
-trapDeath = date(1556, 6, 22)
-gameDate = date(1556, 6, 23)
+gameDate = date(1556, 6, 22)
+trapDeath = date(1556, 6, 23)
 endDate = date(1556, 6, 24)
-victoryDate = date(1556, 6, 25)
+
 
 
 def gameplay():
@@ -373,7 +373,7 @@ def gameplay():
                          '.\ /.'
                            '.'
 
-        You have succeeded in your adventure on {victoryDate.month}-{victoryDate.day}-{victoryDate.year}!
+        You have succeeded in your adventure on {gameDate.month}-{gameDate.day}-{gameDate.year}!
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
          __   __ _______ __   __    _     _ ___ __    _ __ 
