@@ -57,7 +57,11 @@ gameDate = date(1556, 6, 22)
 trapDeath = date(1556, 6, 23)
 endDate = date(1556, 6, 24)
 
-
+journeyTime = {'journey1' : {endDate.day - beginningDate.day},
+               'journey2' : {earlyDeath.day - beginningDate.day},
+               'journey3' : {gameDate.day - beginningDate.day},
+               'journey4' : {trapDeath.day - beginningDate.day}
+               }
 
 def gameplay():
     while True:
@@ -280,6 +284,7 @@ def gameplay():
 
                 {character.name} has lost the battle.
             {earlyDeath.month}-{earlyDeath.day}-{earlyDeath.year} is when your story ends...
+            Your journey lasted {journeyTime['journey2']} day.
                              __
                             /_/\/\  
                             \_\  /
@@ -374,7 +379,8 @@ def gameplay():
                            '.'
 
         You have succeeded in your adventure on {gameDate.month}-{gameDate.day}-{gameDate.year}!
-
+        Your journey lasted {journeyTime['journey3']} days.
+        
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
          __   __ _______ __   __    _     _ ___ __    _ __ 
         |  | |  |       |  | |  |  | | _ | |   |  |  | |  |
@@ -401,6 +407,7 @@ def gameplay():
           if they are anything like that {monster.name}!
         You are forced to return home on {gameDate.month}-{gameDate.day}-{gameDate.year} 
                with shame of your failure!
+               Your journey lasted {journeyTime['journey3']} days.
                     
                     """]
                     prize_won = random.choice(prizes)
@@ -455,6 +462,7 @@ def gameplay():
         {clue}
 
                 Your Adventure Ends on {endDate.month}-{endDate.day}-{endDate.year}.....
+                Your journey lasted {journeyTime['journey1']} days.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->    
                 """)
@@ -479,6 +487,7 @@ def gameplay():
                     Suddenly!! You step {location.trap}!! 
 
                   You have died on {trapDeath.month}-{trapDeath.day}-{trapDeath.year}
+                  Your journey lasted {journeyTime['journey4']} days.
                             _____
                            /     \  
                           | () () |
