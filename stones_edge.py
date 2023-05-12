@@ -95,23 +95,34 @@ def gameplay():
             else:
                 print("Invalid entry, try again!")
 
-        print(f"""
+        print(f"""    
+    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+                        You have chosen {character.name}
+                        Your Hp is: {character.hp}
+                        Your damage is: {character.damage}
         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-                    You have chosen {character.name}
-                    Your Hp is: {character.hp}
-                    Your damage is: {character.damage}
-        
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-
-                  The date is {beginningDate.strftime('%B')} {beginningDate.day}, {beginningDate.year}
-                   You are named {character.name},
-        a {character.job} from the Royal City of Stone's Edge.
+                    The date is {beginningDate.strftime('%B')} {beginningDate.day}, {beginningDate.year}
+                        You are named {character.name},
+            a {character.job} from the Royal City of Stone's Edge.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
         """)
         castle()
+        print(f"""
+    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+        There has been a rumor floating around town...    
+        of a rare jewel the King lost on his last journey.
+                        Problem is...    
+        the details seem to change depending on who you ask.
+        You have four different options of where to go...    
+                    Which will you choose? 
+
+    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+        """)
         while True:
             # Choose the Location
             locationsScreen()
@@ -149,9 +160,8 @@ def gameplay():
             else:
                 print("Invalid entry, try again!")
         print(f"""
-        
-        You have chosen the {location.terrain} to the {location.direction}.
-    Only moments into your adventure you are attacked by a {monster.name}!
+            You have chosen the {location.terrain} to the {location.direction}.
+        Only moments into your adventure you are attacked by a {monster.name}!
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->   
     """)
@@ -219,19 +229,19 @@ def gameplay():
             You tell {location.traveler} of the {monster.name} attack 
                     and how you barely escaped...
             Then you tell them of the rumor you heard 
-                and ask if they had known anthing.
-                    {location.traveler} says they have, 
+                and ask if they had known anything.
+                        {location.traveler} says they have, 
             but first you must win a game of their choice.
                             You agree.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
                 
         {location.traveler} tells you, you will roll a single dice...
-                If it lands on 3 or under, 
+                    If it lands on 3 or under, 
             I will give you what is in my pocket...
     If it lands on a 4 or more then you will be on your own!
-        You tell {location.traveler} that this sounds fair enough.
-            {location.traveler} then hands you the single dice.
+            You tell {location.traveler} that this sounds fair enough.
+                {location.traveler} then hands you the single dice.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
     """)
