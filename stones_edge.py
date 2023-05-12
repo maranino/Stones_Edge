@@ -115,7 +115,7 @@ def gameplay():
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
                   The date is {beginningDate.month}-{beginningDate.day}-{beginningDate.year}
-                    You are named {character.name}...
+                   You are named {character.name},
         a {character.job} from the Royal City of Stone's Edge.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
@@ -284,7 +284,7 @@ def gameplay():
 
                 {character.name} has lost the battle.
             {earlyDeath.month}-{earlyDeath.day}-{earlyDeath.year} is when your story ends...
-            Your journey lasted {journeyTime['journey2']} day.
+                Your journey lasted {journeyTime['journey2']} day.
                              __
                             /_/\/\  
                             \_\  /
@@ -299,13 +299,13 @@ def gameplay():
                 print(f"""
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-                The {monster.name} has lost the battle.
-                        You emerge victorious!
+                    The {monster.name} has lost the battle.
+                       You emerge victorious!
             Beaten and battered from the intense battle 
                     you look for a place to rest.
     You find a large {location.cover} to to hide behind as you recover.
                 Several hours pass then you are awoken 
-            by the sounds of a traveler passing by.
+                by the sounds of a traveler passing by.
                 You decide whether or not to approach 
                     the traveler for information.
 
@@ -379,7 +379,7 @@ def gameplay():
                            '.'
 
         You have succeeded in your adventure on {gameDate.month}-{gameDate.day}-{gameDate.year}!
-        Your journey lasted {journeyTime['journey3']} days.
+                 Your journey lasted {journeyTime['journey3']} days.
         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
          __   __ _______ __   __    _     _ ___ __    _ __ 
@@ -394,7 +394,7 @@ def gameplay():
 
                     """, f"""
 
-                    An old coin? 
+                      An old coin? 
     {location.traveler} places it into your hand and you evaluate it.
                 Why would I want such a thing? 
             As you look up {location.traveler} is gone...
@@ -439,30 +439,29 @@ def gameplay():
         Being a little more cautious now you continue on...
             As the sun starts to set you begin to worry
                 and look for a place to camp.
-                You see a similar {location.cover} like before
-                and figure since it worked last time,
+         You see a similar {location.cover} like before
+              and figure since it worked last time,
         you should try hiding in a spot like that again!
-    As you get closer you look around to make sure it's all clear.
-            As you peak your head around the {location.cover} 
-            you see the {location.monument} you were looking for!
-                    You quickly move towards it 
-                to look for the clue you heard of!
+    You get closer to look around and make sure it's all clear.
+          As you peak your head around the {location.cover} 
+         you see the {location.monument} you were looking for!
+                 You quickly move towards it 
+              to look for the clue you heard of!
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->           
         """)
                 chance = [f"There are no hints or clues at this {location.monument}!", f"The jewel you look for has already been taken by {location.traveler}!"]
                 clue = random.choice(chance)
                 print(f""" 
-        There was always a chance that the rumors weren't true.
+      There was always a chance that the rumors weren't true.
         This moment will determine the fate of my adventure!
         If I get no new leads here, then I must return home.
-                    As you inspect the {location.monument}, 
-                    you find a hand written note...
+      As you inspect the {location.monument}, you find a hand written note.
                             It says... 
         {clue}
 
-                Your Adventure Ends on {endDate.month}-{endDate.day}-{endDate.year}.....
-                Your journey lasted {journeyTime['journey1']} days.
+                Your Adventure Ends on {endDate.month}-{endDate.day}-{endDate.year}...
+                   Your journey lasted {journeyTime['journey1']} days.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->    
                 """)
