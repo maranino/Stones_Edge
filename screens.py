@@ -1,6 +1,5 @@
 def characterScreen():
                 print("""
-
                         === Character List ===           
             -------------------------------------------
             | 1.    Kiri       | 2.      Mika         |
