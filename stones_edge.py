@@ -4,7 +4,7 @@ from datetime import date
 from charactersScreen import characterScreen
 from locationsScreen import locationsScreen
 from travelersScreen import travelersScreen
-from art import castle, mountains, forest, desert, swamps
+from art import castle, mountains, forest, desert, swamps, gameOver
 
 class Character:
     '''This class is to define each character's name, hit point, attack damage and thier job title'''
@@ -14,7 +14,6 @@ class Character:
         self.hp = hp
         self.damage = damage
         self.job = job
-
 
 kiri = Character('Kiri', 140, 60, 'farmer')
 mika = Character('Mika', 120, 70, 'merchant')
@@ -29,7 +28,6 @@ class Monsters:
         self.name = name
         self.hp = hp
         self.damage = damage
-
 
 serpant = Monsters('Serpant', 190, 30)
 hawk = Monsters('Hawk', 180, 40)
@@ -48,7 +46,6 @@ class Locations:
         self.cover = cover
         self.trap = trap
         self.monument = monument
-
 
 east = Locations('east', 'forest', 'Tristan', 'tree', 'into a pit of spikes', 'totem pole')
 west = Locations('west', 'desert', 'Mark', 'rock', 'into a pit of snakes', 'obelisk')
@@ -210,7 +207,7 @@ def gameplay():
             travelersScreen()
             choice = input("""
                   Will you approach the Traveler? """).lower()
-
+            
             if choice == "yes" or choice == "y":
                 print(f"""
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
@@ -390,28 +387,15 @@ def gameplay():
             else:
                 print("Invalid entry, try again!")
 
-    # Code for replay the game
 
-
+# Code for replay the game
 def replay():
     replay = input("""
                         Play again? """).lower()
-
     if replay == "yes" or replay == "y":
         gameplay()
     if replay == "no" or replay == "n":
-        print("""
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->            
-      _____                                 ____                        
-     / ____|                               / __ \                       
-    | |  __    __ _   _ __ ___     ___    | |  | | __   __   ___   _ __ 
-    | | |_ |  / _` | | '_ ` _ \   / _ \   | |  | | \ \ / /  / _ \ | '__|
-    | |__| | | (_| | | | | | | | |  __/   | |__| |  \ V /  |  __/ | |   
-     \_____|  \__,_| |_| |_| |_|  \___|    \____/    \_/    \___| |_|   
-                                                                        
-
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->                                                                     
-    """)
+        gameOver()
     quit()
 
 
