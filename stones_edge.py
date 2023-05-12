@@ -114,7 +114,7 @@ def gameplay():
         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-                  The date is {beginningDate.month}-{beginningDate.day}-{beginningDate.year}
+                  The date is {beginningDate.strftime('%B')} {beginningDate.day}, {beginningDate.year}
                    You are named {character.name},
         a {character.job} from the Royal City of Stone's Edge.
 
@@ -283,7 +283,7 @@ def gameplay():
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
                 {character.name} has lost the battle.
-            {earlyDeath.month}-{earlyDeath.day}-{earlyDeath.year} is when your story ends...
+            {earlyDeath.strftime('%B')} {earlyDeath.day}, {earlyDeath.year} is when your story ends...
                 Your journey lasted {journeyTime['journey2']} day.
                              __
                             /_/\/\  
@@ -378,7 +378,7 @@ def gameplay():
                          '.\ /.'
                            '.'
 
-        You have succeeded in your adventure on {gameDate.month}-{gameDate.day}-{gameDate.year}!
+        You have succeeded in your adventure on {gameDate.strftime('%B')} {gameDate.day}, {gameDate.year}!
                  Your journey lasted {journeyTime['journey3']} days.
         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
@@ -405,7 +405,7 @@ def gameplay():
         and now you don't even have money to buy food!
         You don't have the strength to hunt anything, 
           if they are anything like that {monster.name}!
-        You are forced to return home on {gameDate.month}-{gameDate.day}-{gameDate.year} 
+        You are forced to return home on {gameDate.strftime('%B')} {gameDate.day}, {gameDate.year}
                with shame of your failure!
                Your journey lasted {journeyTime['journey3']} days.
                     
@@ -460,7 +460,7 @@ def gameplay():
                             It says... 
         {clue}
 
-                Your Adventure Ends on {endDate.month}-{endDate.day}-{endDate.year}...
+                Your Adventure Ends on {endDate.strftime('%B')} {endDate.day}, {endDate.year}...
                    Your journey lasted {journeyTime['journey1']} days.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->    
@@ -485,7 +485,7 @@ def gameplay():
             try to trace your steps from the city...
                     Suddenly!! You step {location.trap}!! 
 
-                  You have died on {trapDeath.month}-{trapDeath.day}-{trapDeath.year}
+                  You have died on {trapDeath.strftime('%B')} {trapDeath.day}, {trapDeath.year}!
                   Your journey lasted {journeyTime['journey4']} days.
                             _____
                            /     \  
