@@ -1,9 +1,7 @@
 import random
 from datetime import date
 
-from charactersScreen import characterScreen
-from locationsScreen import locationsScreen
-from travelersScreen import travelersScreen
+from screens import characterScreen, locationsScreen, travelersScreen
 from art import castle, mountains, forest, desert, swamps, gameOver
 
 class Character:
