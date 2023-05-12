@@ -2,7 +2,7 @@ import random
 from datetime import date
 
 from screens import characterScreen, locationsScreen, travelersScreen
-from art import castle, mountains, forest, desert, swamps, gameOver
+from art import castle, mountains, forest, desert, swamps, gameOver, cross, diceArt
 
 class Character:
     '''This class is to define each character's name, hit point, attack damage and thier job title'''
@@ -183,15 +183,10 @@ def gameplay():
                 {character.name} has lost the battle.
             {earlyDeath.strftime('%B')} {earlyDeath.day}, {earlyDeath.year} is when your story ends...
                 Your journey lasted {journeyTime['journey2']} day.
-                             __
-                            /_/\/\  
-                            \_\  /
-                            /_/  \  
-                            \_\/\ \   
-                               \_\/
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
     """)
+                cross()
                 replay()
             if monster.hp <= 0:
                 print(f"""
@@ -247,16 +242,10 @@ def gameplay():
                 dice = random.randint(1, 6)
                 print(f"""
             You roll the dice... it lands on {dice}!
-                          _______            
-                        /\       \           
-                       /()\   ()  \          
-                      /    \_______\         
-                      \    /()     /         
-                       \()/   ()  /          
-                        \/_____()/      
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
     """)
+                diceArt()
                 if dice <= 3:
                     prizes = [f"""
 
@@ -378,15 +367,10 @@ def gameplay():
 
                   You have died on {trapDeath.strftime('%B')} {trapDeath.day}, {trapDeath.year}!
                   Your journey lasted {journeyTime['journey4']} days.
-                            _____
-                           /     \  
-                          | () () |
-                           \  ^  /
-                            ||||| 
-                            uuuuu
                                                         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->        
         """)
+                cross()
                 replay()
 
             elif choice == "exit":
@@ -399,7 +383,7 @@ def gameplay():
 # Code for replay the game
 def replay():
     replay = input("""
-                        Play again? """).lower()
+                            Play again? """).lower()
     if replay == "yes" or replay == "y":
         gameplay()
     if replay == "no" or replay == "n":
