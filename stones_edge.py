@@ -18,7 +18,6 @@ mika = Character('Mika', 120, 70, 'merchant')
 rusty = Character('Rusty', 130, 80, 'prince')
 ciel = Character('Ciel', 120, 70, 'knight')
 
-
 class Monsters:
     '''This class is to define each monster's name, hit points and attack damage'''
 
@@ -31,7 +30,6 @@ serpant = Monsters('Serpant', 190, 30)
 hawk = Monsters('Hawk', 180, 40)
 bear = Monsters('Bear', 220, 50)
 gator = Monsters('Gator', 200, 40)
-
 
 class Locations:
     '''This class is to define each location's direction, terrain, 
