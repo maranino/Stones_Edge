@@ -57,10 +57,10 @@ gameDate = date(1556, 6, 22)
 trapDeath = date(1556, 6, 23)
 endDate = date(1556, 6, 24)
 
-journeyTime = {'journey1' : {endDate.day - beginningDate.day},
-               'journey2' : {earlyDeath.day - beginningDate.day},
-               'journey3' : {gameDate.day - beginningDate.day},
-               'journey4' : {trapDeath.day - beginningDate.day}
+journeyTime = {'journey1' : endDate.day - beginningDate.day,
+               'journey2' : earlyDeath.day - beginningDate.day,
+               'journey3' : gameDate.day - beginningDate.day,
+               'journey4' : trapDeath.day - beginningDate.day
                }
 
 def gameplay():
