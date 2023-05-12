@@ -1,6 +1,9 @@
 import random
 from datetime import date
 
+from charactersScreen import characterScreen
+from locationsScreen import locationsScreen
+from travelersScreen import travelersScreen
 
 class Character:
     '''This class is to define each character's name, hit point, attack damage and thier job title'''
@@ -67,17 +70,7 @@ def gameplay():
     while True:
         while True:
             # Choose the Character:
-            print("""
-
-                     === Character List ===           
-            -------------------------------------------
-            | 1.    Kiri       | 2.      Mika         |
-            -------------------------------------------
-            | 3.    Rusty      | 4.      Ciel         |
-            -------------------------------------------
-            |              5.   Exit                  |
-            -------------------------------------------
-            """)
+            characterScreen()
             choice = input("""
                  Which character do you choose? """).lower()
 
@@ -157,16 +150,7 @@ def gameplay():
 
         while True:
             # Choose the Location
-            print("""
-                        === Location list ===           
-            -------------------------------------------
-            |  North - Mountains  |   East - Forrest   |
-            -------------------------------------------
-            |    West - Desert    |   South - Swamps   |
-            -------------------------------------------
-            |              5.   Exit                   |
-            -------------------------------------------
-            """)
+            locationsScreen()
             choice = input("""
                    Which direction will you go? """).lower()
 
@@ -314,14 +298,7 @@ def gameplay():
                 break
         while True:
             # Approach Traveler?
-            print("""
-                    === Approach Traveler? ===        
-            -------------------------------------------
-            |         Yes         |         No         |
-            -------------------------------------------
-            |                   Exit                   |
-            -------------------------------------------
-            """)
+            travelersScreen()
             choice = input("""
                   Will you approach the Traveler? """).lower()
 
