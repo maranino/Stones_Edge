@@ -167,14 +167,14 @@ def gameplay():
             # Monster Battle
             monster.hp -= character.damage
             print(f"""
-            {character.name} attacks the {monster.name}!
-            The {monster.name}'s hit points are now: {str(monster.hp)}
+                {character.name} attacks the {monster.name}!
+                The {monster.name}'s hit points are now: {str(monster.hp)}
         """)
             if monster.hp > 0:
-                character.hp -= monster.damage
-                print(f"""
-                The {monster.name} strikes back at {character.name}!
-                {character.name}'s hit points are now: {str(character.hp)}
+                    character.hp -= monster.damage
+                    print(f"""
+                    The {monster.name} strikes back at {character.name}!
+                    {character.name}'s hit points are now: {str(character.hp)}
         """)
             if character.hp <= 0:
                 print(f"""
