@@ -4,6 +4,7 @@ from datetime import date
 from charactersScreen import characterScreen
 from locationsScreen import locationsScreen
 from travelersScreen import travelersScreen
+from art import castle, mountains, forest, desert, swamps
 
 class Character:
     '''This class is to define each character's name, hit point, attack damage and thier job title'''
@@ -49,7 +50,7 @@ class Locations:
         self.monument = monument
 
 
-east = Locations('east', 'forrest', 'Tristan', 'tree', 'into a pit of spikes', 'totem pole')
+east = Locations('east', 'forest', 'Tristan', 'tree', 'into a pit of spikes', 'totem pole')
 west = Locations('west', 'desert', 'Mark', 'rock', 'into a pit of snakes', 'obelisk')
 south = Locations('south', 'swamps', 'Trinity', 'broken tree', 'into quicksand', 'tomb')
 north = Locations('north', 'mountains', 'Juni', 'boulder', 'off a cliff', 'temple')
@@ -112,42 +113,8 @@ def gameplay():
         a {character.job} from the Royal City of Stone's Edge.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-        
-                                       o
-                               _---|         _ _ _ _ _
-                            o   ---|     o   ]-I-I-I-[
-           _ _ _ _ _ _  _---|      | _---|    \ ` ' /
-           ]-I-I-I-I-[   ---|      |  ---|    |.   |
-            \ `   '_/       |     / \    |    | /^\|
-             [*]  __|       ^    / ^ \   ^    | |*||
-             |__   ,|      / \  /    `\ / \   | ===|
-          ___| ___ ,|__   /    /=_=_=_=\   \  |,  _|
-          I_I__I_I__I_I  (====(_________)___|_|____|____
-          \-\--|-|--/-/  |     I  [ ]__I I_I__|____I_I_|
-           |[]      '|   | []  |`__  . [  \-\--|-|--/-/
-           |.   | |' |___|_____I___|___I___|---------|
-          / \| []   .|_|-|_|-|-|_|-|_|-|_|-| []   [] |
-         <===>  |   .|-=-=-=-=-=-=-=-=-=-=-|   |    / \  
-         | []|`   [] ||.|.|.|.|.|.|.|.|.|.||-      <===>
-         | []| ` |   |/ / / / / \ \ \ \ \.||__.....|[] |
-         <===>     ' ||||| |   |   | ||||.||  []   <===>
-          \T/  | |-- ||||| | O | O | ||||.|| . |'   \T/
-           |      . _||||| |   |   | ||||.|| |     | |
-        ../|' v . | .|||||/____|____\|||| /|. . | . .|
-        .|//\............/...........\........../../ | 
-        
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-
-        There has been a rumor floating around town...    
-        of a rare jewel the King lost on his last journey.
-                        Problem is...    
-        the details seem to change depending on who you ask.
-        You have four different options of where to go...    
-                    Which will you choose? 
-
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
         """)
-
+        castle()
         while True:
             # Choose the Location
             locationsScreen()
@@ -157,83 +124,25 @@ def gameplay():
             if choice == "mountains" or choice == "north":
                 location = north
                 monster = hawk
-                print(""" 
-
-                                       /\ 
-                                  /\  /  \ 
-                           /\    // \// ^ \        /\ 
-                          // \  ///\//   ^ \  /\  // \ 
-             /\          /  ^ \/^ ^/^  ^  ^ \/^ \/  ^ \ 
-            / ^\    /\  / ^   /  ^/ ^ ^ ^   ^\ ^/  ^^  \ 
-           /^   \  / ^\/ ^ ^   ^ / ^  ^    ^  \/ ^   ^  \       *
-          /  ^ ^ \/^  ^\ ^ ^ ^   ^  ^   ^   ____  ^   ^  \     /|\ 
-         / ^ ^  ^ \ ^  _\___________________|  |_____^ ^  \   /||o\ 
-        / ^^  ^ ^ ^\  /______________________________\ ^ ^ \ /|o|||\ 
-       /  ^  ^^ ^ ^  /________________________________\  ^  /|||||o|\ 
-      /^ ^  ^ ^^  ^    ||___|___||||||||||||___|__|||      /||o||||||\       
-     / ^   ^   ^    ^  ||___|___||||||||||||___|__|||          | |           
-    / ^ ^ ^  ^  ^  ^   ||||||||||||||||||||||||||||||oooooooooo| |ooooo  
-    ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
-            
-                """)
+                mountains()
                 break
 
-            elif choice == "forrest" or choice == "east":
+            elif choice == "forest" or choice == "east":
                 location = east
                 monster = bear
-                print("""
- 
-         ^  ^  ^   ^      ___I_      ^  ^   ^  ^  ^   ^  ^
-        /|\/|\/|\ /|\    /\-_--\    /|\/|\ /|\/|\/|\ /|\/|\ 
-        /|\/|\/|\ /|\   /  \_-__\   /|\/|\ /|\/|\/|\ /|\/|\ 
-        /|\/|\/|\ /|\   |[]| [] |   /|\/|\ /|\/|\/|\ /|\/|\ 
-
-                """)
-
+                forest()
                 break
 
             elif choice == "desert" or choice == "west":
                 location = west
                 monster = serpant
-                print(""" 
-
-               ,,                               .-.
-              || |                               ) )
-              || |   ,                          '-'
-              || |  | |
-              || '--' |
-        ,,    || .----'
-       || |   || |
-       |  '---'| |
-       '------.| |                                  _____
-       ((_))  || |      (  _                       / /|\ \ 
-       (o o)  || |      ))("),                    | | | | |
-    ____\_/___||_|_____((__^_))____________________\_\|/_/__
-
-                """)
+                desert()
                 break
 
             elif choice == "swamps" or choice == "south":
                 location = south
                 monster = gator
-                print("""
-
-                      __..-:'':__:..:__:'':-..__
-                  _.-:__:.-:'':  :  :  :'':-.:__:-._
-                .':.-:  :  :  :  :  :  :  :  :  :._:'.
-             _ :.':  :  :  :  :  :  :  :  :  :  :  :'.: _
-            [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]
-            [ ]:  :  :  :  :  :  :  :  :  :  :  :  :  :[ ]
-   :::::::::[ ]:__:__:__:__:__:__:__:__:__:__:__:__:__:[ ]:::::::::::
-   !!!!!!!!![ ]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!![ ]!!!!!!!!!!!
-   ^^^^^^^^^[ ]^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[ ]^^^^^^^^^^^
-            [ ]                                        [ ]
-            [ ]                                        [ ]
-            [ ]                                        [ ]
-    ~~^_~^~/   \~^-~^~ _~^-~_^~-^~_^~~-^~_~^~-~_~-^~_^/   \~^ ~~_ ^
-
-    """)
-
+                swamps()
                 break
 
             elif choice == "5" or choice == "exit":
