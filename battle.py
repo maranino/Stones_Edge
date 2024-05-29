@@ -26,6 +26,7 @@ def battle(monster, character, early_death, journey_time):
         cross()
 
 def monster_loss(monster, location):
+    '''scenario where monster dies'''
     print(f"""
             ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 

@@ -2,8 +2,7 @@ import random
 from datetime import date
 
 from screens import characterScreen, locationsScreen, travelersScreen
-from dialogue import intro
-from battle import battle
+from dialogue import intro, traveler_encounter, deny_traveler_encounter, game_lost
 from art import mountains, forest, desert, swamps, gameOver, cross, diceArt, youWin
 
 
@@ -229,32 +228,7 @@ def gameplay():
             choice = input("""
                   Will you approach the Traveler? """).lower()
             if choice == "yes" or choice == "y":
-                print(f"""
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-
-        You emerge from the {location.cover} and introduce yourself.
-                They says their name is {location.traveler}.
-        The traveler sees you are wounded and asks... 
-            why you are outside the walls of the Royal City.
-            You tell {location.traveler} of the {monster.name} attack
-                    and how you barely escaped...
-            Then you tell them of the rumor you heard 
-                and ask if they had known anything.
-                        {location.traveler} says they have,
-            but first you must win a game of their choice.
-                            You agree.
-
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-                
-        {location.traveler} tells you, you will roll a single dice...
-                    If it lands on 3 or under, 
-            I will give you what is in my pocket...
-    If it lands on a 4 or more then you will be on your own!
-            You tell {location.traveler} that this sounds fair enough.
-                {location.traveler} then hands you the single dice.
-
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-    """)
+                traveler_encounter(location, monster)
                 # Game
                 dice = random.randint(1, 6)
                 print(f"""
@@ -305,39 +279,7 @@ def gameplay():
                     replay()
 
                 else:
-                    print(f"""
-                        Sorry you lose... 
-        {location.traveler} says they cannot help you, a deal is a deal.
-                        It is the truth... 
-    I suppose I will look further in the {location.terrain} for clues.
-                You say your farewells and continue on.
-                You go deeper into the {location.terrain}...
-        Back home you heard that there was a {location.monument}
-                that held a clue of the jewels location!
-                If you could just find this, 
-            surely you will find what you are looking for...
-    You have a crude map you had drawn up back home, 
-        you pull it out and see if you could find your way...
-        
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-
-                You stumble around for a while 
-                and almost fall {location.trap}!
-            Thankfully you saw it last minute! 
-        Being a little more cautious now you continue on...
-            As the sun starts to set you begin to worry
-                and look for a place to camp.
-         You see a similar {location.cover} like before
-              and figure since it worked last time,
-        you should try hiding in a spot like that again!
-    You get closer to look around and make sure it's all clear.
-          As you peak your head around the {location.cover}
-         you see the {location.monument} you were looking for!
-                 You quickly move towards it 
-              to look for the clue you heard of!
-
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->           
-        """)
+                   game_lost(location)
                 chance = [f"There are no hints or clues at this {location.monument}!", f"The jewel you look for has already been taken by {location.traveler}!"]
                 clue = random.choice(chance)
                 print(f"""
@@ -356,28 +298,7 @@ def gameplay():
                 replay()
 
             elif choice == "no" or choice == "n":
-                print(f"""
-                
-            You stay hidden and let the traveler pass...
-            You never know if someone is friendly or not!
-                You do not have the strength to fight 
-                after that battle with the {monster.name}!
-            Instead you go deeper into the {location.terrain}...
-            Back home you heard that there was a {location.monument}
-                that held a clue of the jewels location!
-                    If you could just find this, 
-            surely you will find what you are looking for...
-        You have a crude map you had drawn up back home, 
-        you pull it out and see if you could find your way...
-                    You slowly step forward as you 
-            try to trace your steps from the city...
-                    Suddenly!! You step {location.trap}!!
-
-                  You have died on {trap_death.strftime('%B')} {trap_death.day}, {trap_death.year}!
-                  Your journey lasted {journey_time['journey4']} days.
-                                                        
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->        
-        """)
+                deny_traveler_encounter(monster, location, trap_death, journey_time)
                 cross()
                 replay()
 
