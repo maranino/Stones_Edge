@@ -1,4 +1,5 @@
-from art import castle
+from art import castle, you_win
+import random
 
 def intro(character, inventory, beginning_date):
     '''first intro of the game'''
@@ -91,6 +92,47 @@ def deny_traveler_encounter(monster, location, trap_death, journey_time):
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->        
         """)
     
+def traveler_prizes(game_date, journey_time, location, monster):
+    '''game of chance with the traveler to get the clue for the jewel'''
+    prizes = [f"""
+
+                     THE RARE JEWEL!
+
+                      .     '     ,
+                        _________
+                     _ /_|_____|_\ _
+                       '. \   / .'
+                         '.\ /.'
+                           '.'
+
+        You have succeeded in your adventure on {game_date.strftime('%B')} {game_date.day}, {game_date.year}!
+                 Your journey lasted {journey_time['journey3']} days.
+        
+
+
+                    """, you_win(), f"""
+
+                      An old coin? 
+    {location.traveler} places it into your hand and you evaluate it.
+                Why would I want such a thing? 
+            As you look up {location.traveler} is gone...
+                    Something is off... 
+        You reach for your coin bag and it's gone!
+            You have been tricked by {location.traveler}!
+                You are wounded, starved 
+        and now you don't even have money to buy food!
+        You don't have the strength to hunt anything, 
+          if they are anything like that {monster.name}!
+        You are forced to return home on {game_date.strftime('%B')} {game_date.day}, {game_date.year}
+               with shame of your failure!
+               Your journey lasted {journey_time['journey3']} days.
+                    
+                    """]
+    prize_won = random.choice(prizes)
+    print(f"""
+                     You have won... 
+                  {prize_won}""")
+
 def game_lost(location):
     '''scenario where you lose the game with the traveler'''
     print(f"""
@@ -126,3 +168,22 @@ def game_lost(location):
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->           
         """)
+
+def traveler_clue(location, end_date, journey_time):
+    '''clues that the traveler may give you if you win the game'''
+    chance = [f"There are no hints or clues at this {location.monument}!",
+              f"The jewel you look for has already been taken by {location.traveler}!"]
+    clue = random.choice(chance)
+    print(f"""
+      There was always a chance that the rumors weren't true.
+        This moment will determine the fate of my adventure!
+        If I get no new leads here, then I must return home.
+      As you inspect the {location.monument}, you find a hand written note.
+                            It says... 
+        {clue}
+
+                Your Adventure Ends on {end_date.strftime('%B')} {end_date.day}, {end_date.year}...
+                   Your journey lasted {journey_time['journey1']} days.
+
+    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->    
+                """)
