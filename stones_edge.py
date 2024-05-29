@@ -3,7 +3,8 @@ from datetime import date
 
 from screens import characterScreen, locationsScreen, travelersScreen
 from dialogue import intro
-from art import castle, mountains, forest, desert, swamps, gameOver, cross, diceArt, youWin
+from battle import battle
+from art import mountains, forest, desert, swamps, gameOver, cross, diceArt, youWin
 
 
 class Characters:
@@ -29,10 +30,10 @@ class Inventory:
         self.gathers = gathers
         self.gift = gift
 
-kiri_inventory = Inventory('pelt', 'scythe', 40, 40, '', '', '')
-mika_inventory = Inventory('vest', 'dagger', 40, 40, '', '', '')
-rusty_inventory = Inventory('crown', 'saber', 40, 40, '', '', '')
-ciel_inventory = Inventory('shield', 'broadsword', 40, 40, '', '', '')
+kiri_inventory = Inventory('Pelt', 'Scythe', 40, 40, '', '', '')
+mika_inventory = Inventory('Vest', 'Dagger', 40, 40, '', '', '')
+rusty_inventory = Inventory('Crown', 'Saber', 40, 40, '', '', '')
+ciel_inventory = Inventory('Shield', 'Broadsword', 40, 40, '', '', '')
 class Character(Characters):
     '''This class is to define each character's name, hit point, attack damage and their job title'''
 
@@ -42,10 +43,10 @@ class Character(Characters):
         super().__init__(name, hp, mp, damage, magic, magic_defense, luck)
 
 
-kiri = Character('Kiri','farmer', 140, 100, 60, 'earth', 50, 15, kiri_inventory)
-mika = Character('Mika', 'merchant', 120, 110, 70, 'lightning', 60, 25, mika_inventory)
-rusty = Character('Rusty', 'prince', 130, 90, 80, 'water', 40, 30, rusty_inventory)
-ciel = Character('Ciel', 'knight', 120, 80, 70, 'fire', 30, 20, ciel_inventory)
+kiri = Character('Kiri','farmer', 140, 100, 60, 'Earth', 50, 15, kiri_inventory)
+mika = Character('Mika', 'merchant', 120, 110, 70, 'Lightning', 60, 25, mika_inventory)
+rusty = Character('Rusty', 'prince', 130, 90, 80, 'Water', 40, 30, rusty_inventory)
+ciel = Character('Ciel', 'knight', 120, 80, 70, 'Fire', 30, 20, ciel_inventory)
 
 class Monsters(Characters):
     '''This class is to define each monster's name, hit points and attack damage'''
@@ -55,10 +56,10 @@ class Monsters(Characters):
         super().__init__(name, hp, mp, damage, magic, magic_defense, luck)
 
 
-serpent = Monsters('Serpent', 190, 30, 40, 'earth', 50, 4, 'scales')
-hawk = Monsters('Hawk', 180, 40, 40, 'wind', 50, 3, 'feathers')
-bear = Monsters('Bear', 220, 50, 50, 'ice', 40, 2, 'fur')
-gator = Monsters('Gator', 200, 40, 30, 'water', 30, 6, 'teeth')
+serpent = Monsters('Serpent', 190, 30, 40, 'Earth', 50, 4, 'Scales')
+hawk = Monsters('Hawk', 180, 40, 40, 'Wind', 50, 3, 'Feathers')
+bear = Monsters('Bear', 220, 50, 50, 'Ice', 40, 2, 'Fur')
+gator = Monsters('Gator', 200, 40, 30, 'Water', 30, 6, 'Teeth')
 
 class Traveler:
     '''This class is to specify the details of the traveler'''
@@ -88,16 +89,16 @@ west = Locations('west', 'desert', mark.name, 'rock', 'into a pit of snakes', 'o
 south = Locations('south', 'swamps', trinity.name, 'broken tree', 'into quicksand', 'tomb')
 north = Locations('north', 'mountains', juni.name, 'boulder', 'off a cliff', 'temple')
 
-beginningDate = date(1556, 6, 20)
-earlyDeath = date(1556, 6, 21)
-gameDate = date(1556, 6, 22)
-trapDeath = date(1556, 6, 23)
-endDate = date(1556, 6, 24)
+beginning_date = date(1556, 6, 20)
+early_death = date(1556, 6, 21)
+game_date = date(1556, 6, 22)
+trap_death = date(1556, 6, 23)
+end_date = date(1556, 6, 24)
 
-journeyTime = {'journey1' : endDate.day - beginningDate.day,
-               'journey2' : earlyDeath.day - beginningDate.day,
-               'journey3' : gameDate.day - beginningDate.day,
-               'journey4' : trapDeath.day - beginningDate.day
+journey_time = {'journey1' : end_date.day - beginning_date.day,
+               'journey2' : early_death.day - beginning_date.day,
+               'journey3' : game_date.day - beginning_date.day,
+               'journey4' : trap_death.day - beginning_date.day
                }
 
 def gameplay():
@@ -111,18 +112,22 @@ def gameplay():
 
             if choice == "1" or choice == "kiri":
                 character = kiri
+                inventory = kiri_inventory
                 break
 
             elif choice == "2" or choice == "mika":
                 character = mika
+                inventory = mika_inventory
                 break
 
             elif choice == "3" or choice == "rusty":
                 character = rusty
+                inventory = rusty_inventory
                 break
 
             elif choice == "4" or choice == "ciel":
                 character = ciel
+                inventory = ciel_inventory
                 break
 
             elif choice == "5" or choice == "exit":
@@ -132,23 +137,8 @@ def gameplay():
             else:
                 print("Invalid entry, try again!")
 
-        print(f"""
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+        intro(character, inventory, beginning_date)
 
-                        You have chosen {character.name}
-                        Your Hp is: {character.hp}
-                        Your damage is: {character.damage}
-        
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-
-                    The date is {beginningDate.strftime('%B')} {beginningDate.day}, {beginningDate.year}
-                        You are named {character.name},
-            a {character.job} from the Royal City of Stone's Edge.
-
-    ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-        """)
-        castle()
-        intro()
         while True:
             # Choose the Location
             locationsScreen()
@@ -209,8 +199,8 @@ def gameplay():
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
                 {character.name} has lost the battle.
-            {earlyDeath.strftime('%B')} {earlyDeath.day}, {earlyDeath.year} is when your story ends...
-                Your journey lasted {journeyTime['journey2']} day.
+            {early_death.strftime('%B')} {early_death.day}, {early_death.year} is when your story ends...
+                Your journey lasted {journey_time['journey2']} day.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
     """)
@@ -285,12 +275,12 @@ def gameplay():
                          '.\ /.'
                            '.'
 
-        You have succeeded in your adventure on {gameDate.strftime('%B')} {gameDate.day}, {gameDate.year}!
-                 Your journey lasted {journeyTime['journey3']} days.
+        You have succeeded in your adventure on {game_date.strftime('%B')} {game_date.day}, {game_date.year}!
+                 Your journey lasted {journey_time['journey3']} days.
         
 
 
-                    """,youWin(), f"""
+                    """, youWin(), f"""
 
                       An old coin? 
     {location.traveler} places it into your hand and you evaluate it.
@@ -303,9 +293,9 @@ def gameplay():
         and now you don't even have money to buy food!
         You don't have the strength to hunt anything, 
           if they are anything like that {monster.name}!
-        You are forced to return home on {gameDate.strftime('%B')} {gameDate.day}, {gameDate.year}
+        You are forced to return home on {game_date.strftime('%B')} {game_date.day}, {game_date.year}
                with shame of your failure!
-               Your journey lasted {journeyTime['journey3']} days.
+               Your journey lasted {journey_time['journey3']} days.
                     
                     """]
                     prize_won = random.choice(prizes)
@@ -358,8 +348,8 @@ def gameplay():
                             It says... 
         {clue}
 
-                Your Adventure Ends on {endDate.strftime('%B')} {endDate.day}, {endDate.year}...
-                   Your journey lasted {journeyTime['journey1']} days.
+                Your Adventure Ends on {end_date.strftime('%B')} {end_date.day}, {end_date.year}...
+                   Your journey lasted {journey_time['journey1']} days.
 
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->    
                 """)
@@ -383,8 +373,8 @@ def gameplay():
             try to trace your steps from the city...
                     Suddenly!! You step {location.trap}!!
 
-                  You have died on {trapDeath.strftime('%B')} {trapDeath.day}, {trapDeath.year}!
-                  Your journey lasted {journeyTime['journey4']} days.
+                  You have died on {trap_death.strftime('%B')} {trap_death.day}, {trap_death.year}!
+                  Your journey lasted {journey_time['journey4']} days.
                                                         
     ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->        
         """)
