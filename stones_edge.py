@@ -109,27 +109,27 @@ def gameplay():
             choice = input("""
                  Which character do you choose? """).lower()
 
-            if choice == "1" or choice == "kiri":
+            if choice in ("kiri", "1"):
                 character = kiri
                 inventory = kiri_inventory
                 break
 
-            elif choice == "2" or choice == "mika":
+            elif choice in ("mika", "2"):
                 character = mika
                 inventory = mika_inventory
                 break
 
-            elif choice == "3" or choice == "rusty":
+            elif choice in ("rusty", "3"):
                 character = rusty
                 inventory = rusty_inventory
                 break
 
-            elif choice == "4" or choice == "ciel":
+            elif choice in ("ciel", "4"):
                 character = ciel
                 inventory = ciel_inventory
                 break
 
-            elif choice == "5" or choice == "exit":
+            elif choice in ("exit", "5"):
                 print("Goodbye!")
                 exit()
 
@@ -144,31 +144,31 @@ def gameplay():
             choice = input("""
                    Which direction will you go? """).lower()
 
-            if choice == "mountains" or choice == "north":
+            if choice in ("mountains", "north"):
                 location = north
                 monster = hawk
                 mountains()
                 break
 
-            elif choice == "forest" or choice == "east":
+            elif choice in ("forest", "east"):
                 location = east
                 monster = bear
                 forest()
                 break
 
-            elif choice == "desert" or choice == "west":
+            elif choice in ("desert", "west"):
                 location = west
                 monster = serpent
                 desert()
                 break
 
-            elif choice == "swamps" or choice == "south":
+            elif choice in ("swamps", "south"):
                 location = south
                 monster = gator
                 swamps()
                 break
 
-            elif choice == "5" or choice == "exit":
+            elif choice in ("5", "exit"):
                 print(f"Goodbye {character.name}!")
                 exit()
 
@@ -227,7 +227,7 @@ def gameplay():
             travelersScreen()
             choice = input("""
                   Will you approach the Traveler? """).lower()
-            if choice == "yes" or choice == "y":
+            if choice in ("yes", "y"):
                 traveler_encounter(location, monster)
                 # Game
                 dice = random.randint(1, 6)
@@ -246,7 +246,7 @@ def gameplay():
                 traveler_clue(location, end_date, journey_time)
                 replay()
 
-            elif choice == "no" or choice == "n":
+            elif choice in ("no", "n"):
                 deny_traveler_encounter(monster, location, trap_death, journey_time)
                 cross()
                 replay()
@@ -263,9 +263,9 @@ def replay():
     '''replay the game?'''
     play = input("""
                             Play again? """).lower()
-    if play == "yes" or play == "y":
+    if play in ("yes", "y"):
         gameplay()
-    if play == "no" or play == "n":
+    if play in ("no", "n"):
         game_over()
     quit()
 
