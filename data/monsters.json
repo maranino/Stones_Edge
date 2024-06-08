@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Serpent",
+        "hp": 190,
+        "damage": 30,
+        "mp": 40,
+        "magic": "Earth",
+        "magic_defense": 50,
+        "luck": 4,
+        "drops": "Scales"
+    },
+    {
+        "name": "Hawk",
+        "hp": 180,
+        "damage": 40,
+        "mp": 40,
+        "magic": "Wind",
+        "magic_defense": 50,
+        "luck": 3,
+        "drops": "Feathers"
+    },
+    {
+        "name": "Bear",
+        "hp": 220,
+        "damage": 50,
+        "mp": 50,
+        "magic": "Ice",
+        "magic_defense": 40,
+        "luck": 2,
+        "drops": "Fur"
+    },
+    {
+        "name": "Gator",
+        "hp": 200,
+        "damage": 40,
+        "mp": 30,
+        "magic": "Water",
+        "magic_defense": 30,
+        "luck": 6,
+        "drops": "Teeth"
+    }
+]

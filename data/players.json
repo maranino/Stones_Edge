@@ -1,0 +1,78 @@
+[
+    {
+        "name": "Kiri",
+        "job": "farmer",
+        "hp": 140,
+        "mp": 100,
+        "damage": 60,
+        "magic": "Earth",
+        "magic_defense": 50,
+        "luck": 15,
+        "inventory": {
+            "armor": "Pelt",
+            "weapon": "Scythe",
+            "hp_potion": 40,
+            "mp_potion": 40,
+            "drops": "",
+            "gathers": "",
+            "gift": ""
+        }
+    },
+    {
+        "name": "Mika",
+        "job": "merchant",
+        "hp": 120,
+        "mp": 110,
+        "damage": 70,
+        "magic": "Lightning",
+        "magic_defense": 60,
+        "luck": 25,
+        "inventory": {
+            "armor": "Vest",
+            "weapon": "Dagger",
+            "hp_potion": 40,
+            "mp_potion": 40,
+            "drops": "",
+            "gathers": "",
+            "gift": ""
+        }
+    },
+    {
+        "name": "Rusty",
+        "job": "prince",
+        "hp": 130,
+        "mp": 90,
+        "damage": 80,
+        "magic": "Water",
+        "magic_defense": 40,
+        "luck": 30,
+        "inventory": {
+            "armor": "Crown",
+            "weapon": "Saber",
+            "hp_potion": 40,
+            "mp_potion": 40,
+            "drops": "",
+            "gathers": "",
+            "gift": ""
+        }
+    },
+    {
+        "name": "Ciel",
+        "job": "knight",
+        "hp": 120,
+        "mp": 80,
+        "damage": 70,
+        "magic": "Fire",
+        "magic_defense": 30,
+        "luck": 20,
+        "inventory": {
+            "armor": "Shield",
+            "weapon": "Broadsword",
+            "hp_potion": 40,
+            "mp_potion": 40,
+            "drops": "",
+            "gathers": "",
+            "gift": ""
+        }
+    }
+]
