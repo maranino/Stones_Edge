@@ -10,10 +10,13 @@ def load_characters_as(file, cls=Character):
     Usage:
         # NOTE: assuming relative path from stones_edge.py
         
-        with open('data/players.json', 'r') as file:
+        with open('data/players.json', 'r') as players_file:
             # Load the characters as Player instances.
-            all_players = load_characters_as(file, cls=Player)
-            all_monsters = load_characters_as(file, cls=Monster)
+            all_monsters = load_characters_as(players_file, cls=Monster)
+        
+        with open('data/monsters.json', 'r') as monsters_file:
+            # Load the characters as Monster instances.
+            all_monsters = load_characters_as(monsters_file, cls=Monster)
     
     Args:
         file: A file-like object containing JSON data.
